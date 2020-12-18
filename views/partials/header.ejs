@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title></title>
+    <%- include('./main', {pageTitle: pageTitle}) %>
 
     <link rel="stylesheet" href="/css/demo.css" />
     <link rel="stylesheet" href="/css/header-basic.css" />
@@ -25,11 +18,15 @@
 
         <nav>
           <a href="/" name="Home">Home</a>
+          <% if (isAuthenticated) { %>
           <a href="/createpost" name="Create">Create Blog</a>
+          <% } %>
+          <% if (!isAuthenticated) { %>
           <a href="/login" name="Login">Login</a>
           <a href="/signup" name="Signup">Signup</a>
+          <% } else { %>
+          <a href="/logout" name="Logout">Logout</a>
+          <% } %>
         </nav>
       </div>
     </header>
-  </body>
-</html>

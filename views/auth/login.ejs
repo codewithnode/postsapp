@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Blog Post App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/css/home.css"
-    />
-  </head>
-  <body>
+<%- include("../partials/header", {pageTitle: "Login"}) %>
     <h4>Welcome to Posts App</h4>
     <h5>Login</h5>
+    <% if (message) { %> <% console.log("logging from views "+message) %>
+    <p><%= message %></p>
+    <% } %>
     <form action="/login" method="POST">
       <p>E-mail <input type="text" name="email" /></p>
       <p>Password <input type="password" name="password" /></p>

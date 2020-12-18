@@ -11,16 +11,19 @@ const bloghome = (req, res, next) => {
   const loginstatus = req.session.isLoggedin;
   const loggedout = !loginstatus;
   Post.find().then(data => {
-    res.render("partials/header", {
+    res.render("home", {
       posts: data,
       loginstatus: loginstatus,
-      loggedout: loggedout
+      loggedout: loggedout,
+      isAuthenticated: loginstatus
     });
   });
 };
 
 const createpost = (req, res, next) => {
-  res.render("createpost");
+  res.render("createpost", {
+    isAuthenticated: req.session.isLoggedin
+  });
 };
 
 const editpost = (req, res, next) => {
@@ -30,7 +33,10 @@ const editpost = (req, res, next) => {
     .then(data => {
       console.log("post found");
       console.log(data);
-      res.render("editpost", { postdata: data });
+      res.render("editpost", {
+        postdata: data,
+        isAuthenticated: req.session.isLoggedin
+      });
     })
     .catch(err => {
       console.log(err);

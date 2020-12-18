@@ -2,12 +2,16 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
 const getlogin = (req, res, next) => {
-  res.render("auth/login");
+  res.render("auth/login", {
+    message: req.flash("error"),
+    isAuthenticated: req.session.isLoggedin
+  });
 };
 
 const getsignup = (req, res, next) => {
   res.render("auth/sign_up", {
-    message: req.flash("error")
+    message: req.flash("error"),
+    isAuthenticated: req.session.isLoggedin
   });
 };
 
@@ -45,6 +49,7 @@ const postlogin = (req, res, next) => {
     .then(user => {
       if (!user) {
         console.log("Authentication Failed");
+        req.flash("error", "Authentication Failed");
         return res.redirect("/login");
       } else {
         bcrypt.compare(passwd, user.password).then(result => {
@@ -55,6 +60,10 @@ const postlogin = (req, res, next) => {
               console.log(err);
               res.redirect("/");
             });
+          } else {
+            req.flash("error", "Authentication Failed");
+            console.log("else Authentication failed");
+            res.redirect("/Login");
           }
         });
       }
