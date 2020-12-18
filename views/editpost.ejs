@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Blog Post App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/css/home.css"
+    />
+  </head>
+  <body>
+      <div class="container">
+    <form action="/updatepost" method= "POST">
+      <p> Post   <input type="text" name="post" label="Post" value="<%= postdata.post %>"></input></p>
+      <p> Author <input type="text" name="author" label="Author" value="<%= postdata.author %>"></input></p>
+      <input type="hidden" name="id" value="<%= postdata.id%>" />
+      <p>        <input type="submit" value="Update Post"/> </p>
+    </form>
+    </div>
+  </body>
+</html>

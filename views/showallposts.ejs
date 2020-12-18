@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>All Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <h4>Welcome to Posts App</h4>
+    <% posts.forEach( post => { %>
+    <h5><%= post.post %></h5>
+    <h6>by <%= post.author %></h6>
+    <% }) %>
+  </body>
+</html>
